@@ -1,9 +1,61 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, ChevronLeft, ChevronRight } from "lucide-react";
+
+const SLIDES = [
+  {
+    src: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=85&auto=format&fit=crop",
+    alt: "Colorful bowl of fresh vegetables, grains and legumes — a balanced budget meal",
+    caption: "Balanced macro bowls",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=85&auto=format&fit=crop",
+    alt: "Meal prep containers filled with healthy, portioned meals for the week",
+    caption: "Smart weekly meal prep",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=900&q=85&auto=format&fit=crop",
+    alt: "Fresh colorful salad with vegetables, seeds and a light dressing",
+    caption: "High-protein, low-cost salads",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=900&q=85&auto=format&fit=crop",
+    alt: "Grilled salmon with roasted vegetables and quinoa — a nutritious dinner",
+    caption: "Nutritionist-approved dinners",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1494390248081-4e521a5940db?w=900&q=85&auto=format&fit=crop",
+    alt: "Overhead shot of healthy breakfast with fruits, yogurt and granola",
+    caption: "Energising breakfasts",
+  },
+];
 
 export function HeroSection() {
+  const [current, setCurrent] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const goTo = useCallback((index: number) => {
+    setCurrent((SLIDES.length + index) % SLIDES.length);
+  }, []);
+
+  /** Derive slide index from horizontal hover position */
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = trackRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      const x = e.clientX - rect.left;
+      const segment = rect.width / SLIDES.length;
+      const index = Math.min(Math.floor(x / segment), SLIDES.length - 1);
+      setCurrent(index);
+    },
+    []
+  );
+
   return (
     <section
       id="hero"
@@ -12,11 +64,11 @@ export function HeroSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text content */}
+          {/* ── Text content ── */}
           <div className="flex flex-col gap-6">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border w-fit text-sm font-medium text-primary">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
               Personalized Meal Plans in Seconds
             </div>
 
@@ -34,26 +86,21 @@ export function HeroSection() {
 
             {/* Social proof */}
             <div className="flex items-center gap-3">
-              <div className="flex -space-x-2">
+              <div className="flex -space-x-2" aria-hidden="true">
                 {["#4ade80", "#22c55e", "#16a34a", "#15803d"].map((color, i) => (
                   <div
                     key={i}
                     className="w-8 h-8 rounded-full border-2 border-background flex items-center justify-center text-xs font-bold text-white"
                     style={{ backgroundColor: color }}
-                    aria-hidden="true"
                   >
                     {["A", "B", "C", "D"][i]}
                   </div>
                 ))}
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1" aria-label="5 out of 5 stars">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-3.5 h-3.5 fill-accent text-accent"
-                      aria-hidden="true"
-                    />
+                    <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" aria-hidden="true" />
                   ))}
                 </div>
                 <span className="text-xs text-muted-foreground font-medium">
@@ -88,57 +135,142 @@ export function HeroSection() {
             </p>
           </div>
 
-          {/* Hero image */}
+          {/* ── Image Slider ── */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-square">
-              <Image
-                src="/images/hero-meal.jpg"
-                alt="A colorful spread of healthy, budget-friendly meals and fresh ingredients"
-                fill
-                className="object-cover"
-                priority
-              />
-              {/* Floating stats card */}
-              <div className="absolute bottom-4 left-4 right-4 md:right-auto md:min-w-56 bg-background/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium">
-                      Weekly grocery budget
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">$42.50</p>
-                    <p className="text-xs text-primary font-semibold mt-0.5">
-                      ↓ 38% vs. average household
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    {[
-                      { label: "Protein", pct: 85, color: "bg-primary" },
-                      { label: "Carbs", pct: 72, color: "bg-accent" },
-                      { label: "Fats", pct: 60, color: "bg-muted-foreground" },
-                    ].map((item) => (
-                      <div key={item.label} className="flex items-center gap-2">
-                        <span className="text-xs text-muted-foreground w-10">
-                          {item.label}
-                        </span>
-                        <div className="w-20 h-1.5 rounded-full bg-border overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${item.color}`}
-                            style={{ width: `${item.pct}%` }}
-                            aria-label={`${item.label}: ${item.pct}%`}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative background ring */}
+            {/* Decorative ring */}
             <div
               className="absolute -z-10 -top-8 -right-8 w-72 h-72 rounded-full bg-secondary opacity-60"
               aria-hidden="true"
             />
+
+            <div
+              ref={trackRef}
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-square cursor-none select-none group"
+              onMouseMove={handleMouseMove}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+              role="region"
+              aria-label="Meal inspiration image slider — hover to browse"
+            >
+              {/* Slides */}
+              {SLIDES.map((slide, i) => (
+                <div
+                  key={slide.src}
+                  className="absolute inset-0 transition-opacity duration-500"
+                  style={{ opacity: i === current ? 1 : 0 }}
+                  aria-hidden={i !== current}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={i === 0}
+                  />
+                </div>
+              ))}
+
+              {/* Dark gradient overlay at bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" aria-hidden="true" />
+
+              {/* Caption */}
+              <div className="absolute bottom-20 left-5 right-5 pointer-events-none">
+                <p className="text-white text-sm font-semibold tracking-wide drop-shadow-md transition-all duration-300">
+                  {SLIDES[current].caption}
+                </p>
+              </div>
+
+              {/* Hover scrub zones — invisible hit targets, one per slide */}
+              <div className="absolute inset-0 flex pointer-events-none" aria-hidden="true">
+                {SLIDES.map((_, i) => (
+                  <div key={i} className="flex-1 h-full" />
+                ))}
+              </div>
+
+              {/* Dot indicators */}
+              <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2 pointer-events-none" role="tablist" aria-label="Slide indicators">
+                {SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    role="tab"
+                    aria-selected={i === current}
+                    aria-label={`Go to slide ${i + 1}: ${SLIDES[i].caption}`}
+                    onClick={() => goTo(i)}
+                    className={[
+                      "rounded-full transition-all duration-300 pointer-events-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
+                      i === current
+                        ? "w-6 h-2 bg-white"
+                        : "w-2 h-2 bg-white/50 hover:bg-white/80",
+                    ].join(" ")}
+                  />
+                ))}
+              </div>
+
+              {/* Prev / Next arrow buttons (visible on touch / keyboard) */}
+              <button
+                onClick={() => goTo(current - 1)}
+                aria-label="Previous slide"
+                className={[
+                  "absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                  isHovering ? "opacity-0" : "opacity-100 md:opacity-0 md:group-hover:opacity-100",
+                ].join(" ")}
+              >
+                <ChevronLeft className="w-4 h-4 text-foreground" aria-hidden="true" />
+              </button>
+              <button
+                onClick={() => goTo(current + 1)}
+                aria-label="Next slide"
+                className={[
+                  "absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                  isHovering ? "opacity-0" : "opacity-100 md:opacity-0 md:group-hover:opacity-100",
+                ].join(" ")}
+              >
+                <ChevronRight className="w-4 h-4 text-foreground" aria-hidden="true" />
+              </button>
+
+              {/* Hover hint (fades out once user starts hovering) */}
+              <div
+                className={[
+                  "absolute top-4 right-4 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium text-foreground shadow transition-opacity duration-300 pointer-events-none",
+                  isHovering ? "opacity-0" : "opacity-100",
+                ].join(" ")}
+                aria-hidden="true"
+              >
+                Hover to explore
+              </div>
+            </div>
+
+            {/* Floating stats card */}
+            <div className="absolute -bottom-5 left-4 right-4 md:right-auto md:min-w-60 bg-background/95 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-border">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs text-muted-foreground font-medium">Weekly grocery budget</p>
+                  <p className="text-2xl font-bold text-foreground">$42.50</p>
+                  <p className="text-xs text-primary font-semibold mt-0.5">
+                    38% less vs. avg. household
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  {[
+                    { label: "Protein", pct: 85, color: "bg-primary" },
+                    { label: "Carbs", pct: 72, color: "bg-accent" },
+                    { label: "Fats", pct: 60, color: "bg-muted-foreground" },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-center gap-2">
+                      <span className="text-xs text-muted-foreground w-10">{item.label}</span>
+                      <div className="w-20 h-1.5 rounded-full bg-border overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${item.color}`}
+                          style={{ width: `${item.pct}%` }}
+                          aria-label={`${item.label}: ${item.pct}%`}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
