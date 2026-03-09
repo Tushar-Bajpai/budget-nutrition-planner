@@ -17,13 +17,9 @@ export function FooterSection() {
             <Link
               href="/"
               className="flex items-center gap-2 w-fit"
-              aria-label="NutriSave home"
-            >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
-                <Leaf className="w-4 h-4 text-primary-foreground" aria-hidden="true" />
-              </div>
+            aria-label="NutriBudget home"
               <span className="font-semibold text-lg text-primary-foreground font-sans">
-                NutriSave
+                NutriBudget
               </span>
             </Link>
             <p className="text-sm text-white/50 leading-relaxed max-w-xs">
@@ -56,7 +52,7 @@ export function FooterSection() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/40">
-            &copy; {new Date().getFullYear()} NutriSave. All rights reserved.
+            &copy; {new Date().getFullYear()} NutriBudget. All rights reserved.
           </p>
           <p className="text-xs text-white/40">
             Built to help you eat well and spend less.

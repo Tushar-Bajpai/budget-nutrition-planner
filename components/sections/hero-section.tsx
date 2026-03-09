@@ -43,7 +43,6 @@ export function HeroSection() {
     setCurrent((SLIDES.length + index) % SLIDES.length);
   }, []);
 
-  /** Derive slide index from horizontal hover position */
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       const rect = trackRef.current?.getBoundingClientRect();
@@ -64,8 +63,12 @@ export function HeroSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* ── Text content ── */}
-          <div className="flex flex-col gap-6">
+
+          {/* Text content — slides in from left */}
+          <div
+            className="flex flex-col gap-6 animate-in-view-left is-visible"
+            style={{ transitionDelay: "0ms" }}
+          >
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border w-fit text-sm font-medium text-primary">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
@@ -73,7 +76,8 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
-              Healthy Eating That Fits Your <span className="text-primary">Budget</span>
+              Healthy Eating That Fits Your{" "}
+              <span className="text-primary">Budget</span>
             </h1>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -114,7 +118,7 @@ export function HeroSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-xl px-7 gap-2 text-base"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-xl px-7 gap-2 text-base transition-transform duration-150 hover:scale-105 active:scale-95"
               >
                 <Link href="#planner">
                   Generate My Meal Plan <ArrowRight className="w-4 h-4" />
@@ -124,7 +128,7 @@ export function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-xl px-7 font-medium text-base border-border text-foreground hover:bg-secondary"
+                className="rounded-xl px-7 font-medium text-base border-border text-foreground hover:bg-secondary transition-transform duration-150 hover:scale-105 active:scale-95"
               >
                 <Link href="#how-it-works">Learn How It Works</Link>
               </Button>
@@ -135,8 +139,11 @@ export function HeroSection() {
             </p>
           </div>
 
-          {/* ── Image Slider ── */}
-          <div className="relative">
+          {/* Image Slider — slides in from right */}
+          <div
+            className="relative animate-in-view-right is-visible"
+            style={{ transitionDelay: "120ms" }}
+          >
             {/* Decorative ring */}
             <div
               className="absolute -z-10 -top-8 -right-8 w-72 h-72 rounded-full bg-secondary opacity-60"
@@ -181,13 +188,6 @@ export function HeroSection() {
                 </p>
               </div>
 
-              {/* Hover scrub zones — invisible hit targets, one per slide */}
-              <div className="absolute inset-0 flex pointer-events-none" aria-hidden="true">
-                {SLIDES.map((_, i) => (
-                  <div key={i} className="flex-1 h-full" />
-                ))}
-              </div>
-
               {/* Dot indicators */}
               <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2 pointer-events-none" role="tablist" aria-label="Slide indicators">
                 {SLIDES.map((_, i) => (
@@ -207,7 +207,7 @@ export function HeroSection() {
                 ))}
               </div>
 
-              {/* Prev / Next arrow buttons (visible on touch / keyboard) */}
+              {/* Prev / Next arrow buttons */}
               <button
                 onClick={() => goTo(current - 1)}
                 aria-label="Previous slide"
@@ -229,7 +229,7 @@ export function HeroSection() {
                 <ChevronRight className="w-4 h-4 text-foreground" aria-hidden="true" />
               </button>
 
-              {/* Hover hint (fades out once user starts hovering) */}
+              {/* Hover hint */}
               <div
                 className={[
                   "absolute top-4 right-4 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium text-foreground shadow transition-opacity duration-300 pointer-events-none",

@@ -1,4 +1,7 @@
+"use client";
+
 import { CheckCircle2, Sparkles, Target, TrendingDown, Apple } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   {
@@ -37,15 +40,18 @@ const checks = [
 ];
 
 export function SolutionSection() {
+  const ref = useScrollAnimation<HTMLElement>();
+
   return (
     <section
-      id="features"
+      id="solution"
+      ref={ref}
       className="py-20 md:py-28 bg-background"
       aria-label="Our solution"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-in-view">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight text-balance mb-4">
             A Smarter Way to Plan Your Meals
           </h2>
@@ -59,10 +65,11 @@ export function SolutionSection() {
 
         {/* Feature grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {features.map(({ icon: Icon, title, description }) => (
+          {features.map(({ icon: Icon, title, description }, i) => (
             <div
               key={title}
-              className="flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:shadow-md transition-shadow"
+              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:shadow-md hover:-translate-y-1 transition-all duration-200"
+              data-delay={String(i + 1) as "1" | "2" | "3" | "4"}
             >
               <div className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center shrink-0">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
@@ -78,7 +85,7 @@ export function SolutionSection() {
         </div>
 
         {/* Feature checklist + visual */}
-        <div className="rounded-3xl bg-secondary border border-border overflow-hidden">
+        <div className="animate-in-view rounded-3xl bg-secondary border border-border overflow-hidden" data-delay="1">
           <div className="grid lg:grid-cols-2">
             {/* Checklist */}
             <div className="p-8 md:p-12 flex flex-col gap-6 justify-center">

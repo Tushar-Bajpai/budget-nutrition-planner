@@ -1,16 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function CtaSection() {
+  const ref = useScrollAnimation<HTMLElement>();
+
   return (
     <section
       id="cta"
+      ref={ref}
       className="py-20 md:py-28 bg-background"
       aria-label="Call to action"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-primary px-8 py-16 md:py-20 flex flex-col items-center text-center gap-8 relative overflow-hidden">
+        <div className="animate-in-view rounded-3xl bg-primary px-8 py-16 md:py-20 flex flex-col items-center text-center gap-8 relative overflow-hidden">
           {/* Decorative circles */}
           <div
             className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-white/5"

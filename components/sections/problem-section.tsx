@@ -1,4 +1,7 @@
-import { DollarSign, Brain, ShoppingCart, Clock } from "lucide-react";
+"use client";
+
+import { DollarSign, Brain, Clock } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const problems = [
   {
@@ -22,15 +25,18 @@ const problems = [
 ];
 
 export function ProblemSection() {
+  const ref = useScrollAnimation<HTMLElement>();
+
   return (
     <section
       id="problem"
+      ref={ref}
       className="py-20 md:py-28 bg-foreground"
       aria-label="The problem"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-14 animate-in-view">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight text-balance">
             Why Healthy Eating Is Difficult for Many People
           </h2>
@@ -38,10 +44,11 @@ export function ProblemSection() {
 
         {/* Problem cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {problems.map(({ icon: Icon, title, description }) => (
+          {problems.map(({ icon: Icon, title, description }, i) => (
             <div
               key={title}
-              className="flex flex-col gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/8 transition-colors"
+              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/8 transition-colors"
+              data-delay={String(i + 1) as "1" | "2" | "3"}
             >
               <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
@@ -62,10 +69,11 @@ export function ProblemSection() {
             { value: "$1,800", label: "avg. annual food waste per household" },
             { value: "68%", label: "of people skip meal planning entirely" },
             { value: "3x", label: "more likely to eat healthy with a plan" },
-          ].map(({ value, label }) => (
+          ].map(({ value, label }, i) => (
             <div
               key={label}
-              className="bg-foreground px-8 py-7 flex flex-col gap-1"
+              className="animate-in-view-scale bg-foreground px-8 py-7 flex flex-col gap-1"
+              data-delay={String(i + 1) as "1" | "2" | "3"}
             >
               <span className="text-3xl font-bold text-primary">{value}</span>
               <span className="text-sm text-white/60 leading-relaxed">{label}</span>

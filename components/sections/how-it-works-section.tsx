@@ -1,4 +1,7 @@
+"use client";
+
 import { UserCircle, Sliders, CalendarDays, ShoppingBag } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const steps = [
   {
@@ -32,15 +35,18 @@ const steps = [
 ];
 
 export function HowItWorksSection() {
+  const ref = useScrollAnimation<HTMLElement>();
+
   return (
     <section
       id="how-it-works"
+      ref={ref}
       className="py-20 md:py-28 bg-secondary"
       aria-label="How it works"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16 animate-in-view">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight text-balance mb-4">
             How NutriBudget Works
           </h2>
@@ -55,11 +61,15 @@ export function HowItWorksSection() {
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map(({ step, icon: Icon, title, description }) => (
-              <div key={step} className="flex flex-col items-center text-center gap-4">
+            {steps.map(({ step, icon: Icon, title, description }, i) => (
+              <div
+                key={step}
+                className="animate-in-view flex flex-col items-center text-center gap-4"
+                data-delay={String(i + 1) as "1" | "2" | "3" | "4"}
+              >
                 {/* Step number + icon */}
                 <div className="relative flex flex-col items-center gap-2">
-                  <div className="w-20 h-20 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center transition-transform duration-200 hover:scale-110 hover:shadow-md">
                     <Icon className="w-8 h-8 text-primary" aria-hidden="true" />
                   </div>
                   <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">

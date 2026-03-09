@@ -1,4 +1,7 @@
+"use client";
+
 import { CheckCircle2 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   {
@@ -34,15 +37,18 @@ const features = [
 ];
 
 export function FeaturesSection() {
+  const ref = useScrollAnimation<HTMLElement>();
+
   return (
     <section
       id="features"
+      ref={ref}
       className="py-20 md:py-28 bg-background"
       aria-label="Key features"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16 animate-in-view">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight text-balance">
             Key Features
           </h2>
@@ -50,10 +56,11 @@ export function FeaturesSection() {
 
         {/* Feature grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map(({ title, description }) => (
+          {features.map(({ title, description }, i) => (
             <div
               key={title}
-              className="flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:shadow-md transition-shadow"
+              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:shadow-md hover:-translate-y-1 transition-all duration-200"
+              data-delay={String(i + 1) as "1" | "2" | "3" | "4" | "5" | "6"}
             >
               <div className="flex items-start gap-3">
                 <CheckCircle2
