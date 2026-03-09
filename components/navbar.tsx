@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X, UtensilsCrossed } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -161,12 +161,12 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 shrink-0 group"
+            className="flex items-center gap-2 shrink-0"
             aria-label="NutriBudget home"
             onClick={() => setActiveHref("/")}
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary transition-transform duration-200 group-hover:scale-110">
-              <Leaf className="w-4 h-4 text-primary-foreground" />
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
+              <UtensilsCrossed className="w-4 h-4 text-primary-foreground" />
             </div>
             <span className="font-semibold text-lg text-foreground font-sans tracking-tight">
               NutriBudget

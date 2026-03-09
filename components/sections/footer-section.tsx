@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Leaf } from "lucide-react";
+import { UtensilsCrossed } from "lucide-react";
 
 const footerLinks = {
   Product: ["Features", "Pricing", "Sample Plans", "Changelog"],
@@ -20,7 +20,7 @@ export function FooterSection() {
               aria-label="NutriBudget home"
             >
               <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
-                <Leaf className="w-4 h-4 text-primary-foreground" />
+                <UtensilsCrossed className="w-4 h-4 text-primary-foreground" />
               </div>
               <span className="font-semibold text-lg text-primary-foreground font-sans">
                 NutriBudget
