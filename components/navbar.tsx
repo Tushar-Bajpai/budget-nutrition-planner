@@ -8,7 +8,7 @@ import { Menu, X, Leaf } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Planner", href: "#planner" },
+  { label: "Planner", href: "/planner" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "About", href: "#about" },
@@ -145,15 +145,7 @@ export function Navbar() {
               size="sm"
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg px-5 transition-transform duration-150 hover:scale-105 active:scale-95"
             >
-              <a
-                href="#planner"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo("#planner");
-                }}
-              >
-                Start Planning
-              </a>
+              <Link href="/planner">Start Planning</Link>
             </Button>
           </div>
 
@@ -232,16 +224,9 @@ export function Navbar() {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg"
             >
-              <a
-                href="#planner"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo("#planner");
-                  setMobileOpen(false);
-                }}
-              >
+              <Link href="/planner" onClick={() => setMobileOpen(false)}>
                 Start Planning
-              </a>
+              </Link>
             </Button>
           </div>
         </nav>
