@@ -4,30 +4,30 @@ const steps = [
   {
     step: "01",
     icon: UserCircle,
-    title: "Tell us about yourself",
+    title: "Enter Your Details",
     description:
-      "Enter your dietary goals, food preferences, allergies, and how many people you're cooking for. Takes under 2 minutes.",
+      "Provide your health goals, calorie requirements, dietary preferences, and weekly grocery budget.",
   },
   {
     step: "02",
     icon: Sliders,
-    title: "Set your weekly budget",
+    title: "Generate Your Meal Plan",
     description:
-      "Enter how much you want to spend on groceries. Our engine finds the best nutritional value for every dollar.",
+      "Our recommendation engine creates a personalized weekly meal plan optimized for nutrition and cost.",
   },
   {
     step: "03",
-    icon: CalendarDays,
-    title: "Generate your meal plan",
+    icon: ShoppingBag,
+    title: "Get Your Grocery List",
     description:
-      "Click generate and receive a full 7-day plan complete with breakfast, lunch, dinner, and snacks — in seconds.",
+      "Receive a detailed shopping list containing all ingredients needed for the week.",
   },
   {
     step: "04",
-    icon: ShoppingBag,
-    title: "Shop and enjoy",
+    icon: CalendarDays,
+    title: "Eat Healthy and Save Money",
     description:
-      "Download your sorted grocery list, head to the store, and start cooking. It's really that simple.",
+      "Follow your plan to maintain a balanced diet while staying within your grocery budget.",
   },
 ];
 
@@ -41,16 +41,9 @@ export function HowItWorksSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
-            How It Works
-          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight text-balance mb-4">
-            Your personalized plan in 4 easy steps.
+            How NutriBudget Works
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            No nutritionist degree required. NutriSave guides you from setup
-            to shopping cart in just a few clicks.
-          </p>
         </div>
 
         {/* Steps */}

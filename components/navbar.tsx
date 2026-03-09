@@ -7,10 +7,11 @@ import { cn } from "@/lib/utils";
 import { Menu, X, Leaf } from "lucide-react";
 
 const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Planner", href: "#planner" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "#about" },
 ];
 
 export function Navbar() {
@@ -24,13 +25,13 @@ export function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-2 shrink-0"
-            aria-label="NutriSave home"
+            aria-label="NutriBudget home"
           >
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
               <Leaf className="w-4 h-4 text-primary-foreground" />
             </div>
             <span className="font-semibold text-lg text-foreground font-sans tracking-tight">
-              NutriSave
+              NutriBudget
             </span>
           </Link>
 
@@ -63,7 +64,7 @@ export function Navbar() {
               size="sm"
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg px-5"
             >
-              <Link href="#get-started">Get Started Free</Link>
+              <Link href="#planner">Start Planning</Link>
             </Button>
           </div>
 
@@ -110,8 +111,8 @@ export function Navbar() {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg"
             >
-              <Link href="#get-started" onClick={() => setMobileOpen(false)}>
-                Get Started Free
+              <Link href="#planner" onClick={() => setMobileOpen(false)}>
+                Start Planning
               </Link>
             </Button>
           </div>

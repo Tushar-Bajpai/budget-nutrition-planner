@@ -3,27 +3,21 @@ import { DollarSign, Brain, ShoppingCart, Clock } from "lucide-react";
 const problems = [
   {
     icon: DollarSign,
-    title: "Groceries eating your budget?",
+    title: "Healthy Food Feels Expensive",
     description:
-      "The average household spends $500+ per month on food, with up to 30% wasted due to poor planning and impulse buying.",
-  },
-  {
-    icon: Brain,
-    title: "Nutrition feels overwhelming?",
-    description:
-      "Figuring out macros, vitamins, and balanced meals requires expert knowledge most people simply don't have time to develop.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "No clue what to buy?",
-    description:
-      "Without a clear plan, grocery runs become guesswork — leading to duplicate items, spoiled food, and frustrating waste.",
+      "Many people assume eating healthy requires expensive ingredients and complicated recipes.",
   },
   {
     icon: Clock,
-    title: "No time to plan meals?",
+    title: "Meal Planning Takes Too Much Time",
     description:
-      "Life is busy. Sitting down each week to map out 21 meals from scratch is exhausting — and most people just give up.",
+      "Planning meals for the week and organizing groceries can take hours, especially for busy students and working professionals.",
+  },
+  {
+    icon: Brain,
+    title: "Nutrition Is Hard to Understand",
+    description:
+      "Balancing calories, protein, and nutrients can be confusing without proper knowledge or guidance.",
   },
 ];
 
@@ -37,16 +31,13 @@ export function ProblemSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mb-14">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
-            The Problem
-          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight text-balance">
-            Eating healthy on a budget is harder than it should be.
+            Why Healthy Eating Is Difficult for Many People
           </h2>
         </div>
 
         {/* Problem cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {problems.map(({ icon: Icon, title, description }) => (
             <div
               key={title}

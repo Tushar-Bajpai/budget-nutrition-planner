@@ -73,15 +73,15 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
-              Eat Well.{" "}
-              <span className="text-primary">Spend Less.</span>{" "}
-              Feel Great.
+              Healthy Eating That Fits Your <span className="text-primary">Budget</span>
             </h1>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              NutriSave generates personalized, nutritionist-approved meal plans
-              tailored to your dietary goals and weekly budget — no guesswork,
-              no waste.
+              Plan affordable, nutritious meals tailored to your health goals. Our smart meal planner generates weekly meal plans and grocery lists while keeping your budget in mind.
+            </p>
+
+            <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+              Stop overspending on groceries and struggling with meal planning. NutriBudget helps you eat healthier, save money, and simplify your weekly food planning.
             </p>
 
             {/* Social proof */}
@@ -116,8 +116,8 @@ export function HeroSection() {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-xl px-7 gap-2 text-base"
               >
-                <Link href="#get-started">
-                  Start for Free <ArrowRight className="w-4 h-4" />
+                <Link href="#planner">
+                  Generate My Meal Plan <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
               <Button
@@ -126,7 +126,7 @@ export function HeroSection() {
                 size="lg"
                 className="rounded-xl px-7 font-medium text-base border-border text-foreground hover:bg-secondary"
               >
-                <Link href="#how-it-works">See How It Works</Link>
+                <Link href="#how-it-works">Learn How It Works</Link>
               </Button>
             </div>
 
