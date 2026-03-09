@@ -120,7 +120,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-xl px-7 gap-2 text-base transition-transform duration-150 hover:scale-105 active:scale-95"
               >
-                <Link href="#planner">
+                <Link href="/planner">
                   Generate My Meal Plan <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>

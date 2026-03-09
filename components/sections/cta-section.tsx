@@ -42,7 +42,7 @@ export function CtaSection() {
               size="lg"
               className="bg-card text-primary hover:bg-card/90 font-bold rounded-xl px-8 gap-2 text-base shadow-md"
             >
-              <Link href="#planner">
+              <Link href="/planner">
                 Start My Meal Plan <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
