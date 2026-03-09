@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type PlannerFormData, calculateCalories } from "@/app/planner/types";
@@ -24,6 +25,7 @@ function isFormComplete(data: PlannerFormData): { ready: boolean; missing: strin
 }
 
 export function GeneratePlanButton({ data }: GeneratePlanButtonProps) {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [generated, setGenerated] = useState(false);
 
@@ -34,11 +36,15 @@ export function GeneratePlanButton({ data }: GeneratePlanButtonProps) {
   function handleGenerate() {
     if (!ready) return;
     setLoading(true);
-    // Simulate generation
+    // Simulate generation and navigate to meal plan page
     setTimeout(() => {
       setLoading(false);
       setGenerated(true);
     }, 2200);
+  }
+
+  function handleViewPlan() {
+    router.push("/meal-plan");
   }
 
   return (
@@ -110,7 +116,10 @@ export function GeneratePlanButton({ data }: GeneratePlanButtonProps) {
             >
               Adjust Inputs
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl gap-2">
+            <Button
+              onClick={handleViewPlan}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl gap-2"
+            >
               View Meal Plan <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
