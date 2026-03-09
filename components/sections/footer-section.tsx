@@ -17,7 +17,11 @@ export function FooterSection() {
             <Link
               href="/"
               className="flex items-center gap-2 w-fit"
-            aria-label="NutriBudget home"
+              aria-label="NutriBudget home"
+            >
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
+                <Leaf className="w-4 h-4 text-primary-foreground" />
+              </div>
               <span className="font-semibold text-lg text-primary-foreground font-sans">
                 NutriBudget
               </span>
