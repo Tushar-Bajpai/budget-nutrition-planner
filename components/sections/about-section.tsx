@@ -53,8 +53,11 @@ export function AboutSection() {
         {/* Mission Statement */}
         <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16 animate-in-view" data-delay="1">
           <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+            NutriBudget was created to bridge the gap between health and affordability. We understand that maintaining a healthy diet shouldn't drain your wallet. Our intelligent meal planning system combines nutritional science with budget optimization to create personalized meal plans that work for your lifestyle and your finances.
+          </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            NutriBudget was created to bridge the gap between health and affordability. We understand that maintaining a healthy diet shouldn't drain your wallet. Our intelligent meal planning system combines nutritional science with budget optimization to create personalized meal plans that work for your lifestyle and your finances. Whether you're a busy student, a working professional, or a parent managing a household, NutriBudget helps you make informed food choices without the stress or expense.
+            Whether you're a busy student, a working professional, or a parent managing a household, NutriBudget helps you make informed food choices without the stress or expense. We believe that healthy eating is a right, not a privilege, and our platform is designed to make nutritious, affordable meals accessible to everyone.
           </p>
         </div>
 
@@ -78,8 +81,36 @@ export function AboutSection() {
           </div>
         </div>
 
+        {/* How We Work */}
+        <div className="mb-16 animate-in-view" data-delay="2">
+          <h3 className="text-2xl font-bold text-foreground mb-10 text-center">How We Work</h3>
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="bg-card rounded-xl p-6 border border-border">
+              <div className="text-4xl font-bold text-primary mb-4">1</div>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Smart Analysis</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Our AI analyzes your health goals, dietary preferences, allergies, and budget constraints to understand your unique needs.
+              </p>
+            </div>
+            <div className="bg-card rounded-xl p-6 border border-border">
+              <div className="text-4xl font-bold text-primary mb-4">2</div>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Intelligent Planning</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Our recommendation engine generates optimized 7-day meal plans that balance nutrition, taste, variety, and cost.
+              </p>
+            </div>
+            <div className="bg-card rounded-xl p-6 border border-border">
+              <div className="text-4xl font-bold text-primary mb-4">3</div>
+              <h4 className="text-lg font-semibold text-foreground mb-3">Organized Shopping</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Get a comprehensive grocery list organized by category, with exact quantities and estimated costs for each item.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Why Choose Us */}
-        <div className="grid md:grid-cols-2 gap-12 items-center animate-in-view" data-delay="2">
+        <div className="grid md:grid-cols-2 gap-12 items-center animate-in-view" data-delay="3">
           <div>
             <h3 className="text-2xl font-bold text-foreground mb-6">Why Choose NutriBudget?</h3>
             <ul className="space-y-4">
@@ -123,7 +154,7 @@ export function AboutSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 animate-in-view" data-delay="3">
+        <div className="text-center mt-16 animate-in-view" data-delay="4">
           <p className="text-lg text-muted-foreground mb-4">
             Ready to start planning healthier meals and saving money?
           </p>
