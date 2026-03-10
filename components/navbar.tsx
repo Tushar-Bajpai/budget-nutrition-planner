@@ -229,12 +229,6 @@ export function Navbar() {
 
           {/* CTA — desktop */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="#"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-150"
-            >
-              Log in
-            </Link>
             <Button
               asChild
               size="sm"
@@ -297,13 +291,6 @@ export function Navbar() {
             );
           })}
           <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
-            <Link
-              href="#"
-              className="px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-secondary transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              Log in
-            </Link>
             <Button
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg"
