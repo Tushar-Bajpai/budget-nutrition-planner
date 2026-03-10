@@ -30,6 +30,7 @@ const values = [
 
 export function AboutSection() {
   const ref = useRef<HTMLElement>(null);
+  useScrollAnimation(ref);
 
   return (
     <section
