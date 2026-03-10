@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Heart, Users, Zap, Target } from "lucide-react";
 
@@ -50,14 +51,43 @@ export function AboutSection() {
           </div>
         </div>
 
+        {/* Our Story */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-in-view" data-delay="1">
+          <div>
+            <h3 className="text-2xl font-bold text-foreground mb-6">Our Story</h3>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              NutriBudget was born from a simple observation: millions of people struggle to balance two critical needs — staying healthy and managing their finances. Our founders saw friends and family members sacrificing nutrition to save money, or overspending on groceries without knowing if they were meeting their health goals.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              In 2023, we decided to change this narrative. Using machine learning and nutritional science, we built a platform that makes healthy eating affordable for everyone. Today, NutriBudget helps thousands of users eat smarter, save money, and reclaim the confidence to make food choices based on health — not just price.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              We're committed to innovation, transparency, and putting our users' needs first. Whether you're managing diabetes, following a vegan diet, or simply trying to eat better on a tight budget, NutriBudget adapts to your unique situation.
+            </p>
+          </div>
+          <div className="relative rounded-2xl overflow-hidden animate-in-view-right">
+            <Image
+              src="/images/about-healthy-eating.jpg"
+              alt="Diverse group enjoying healthy meals together"
+              width={500}
+              height={400}
+              className="w-full h-full object-cover rounded-2xl"
+              priority
+            />
+          </div>
+        </div>
+
         {/* Mission Statement */}
-        <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16 animate-in-view" data-delay="1">
+        <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16 animate-in-view" data-delay="2">
           <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
           <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-            NutriBudget was created to bridge the gap between health and affordability. We understand that maintaining a healthy diet shouldn't drain your wallet. Our intelligent meal planning system combines nutritional science with budget optimization to create personalized meal plans that work for your lifestyle and your finances.
+            NutriBudget's mission is simple: empower individuals to achieve optimal health without financial stress. We're dedicated to eliminating the false choice between eating well and saving money.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+            Using AI and nutritional science, we create personalized meal plans that balance your dietary preferences, health goals, and grocery budget. Our platform handles the complexity so you can focus on what matters — feeling great and saving money.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Whether you're a busy student, a working professional, or a parent managing a household, NutriBudget helps you make informed food choices without the stress or expense. We believe that healthy eating is a right, not a privilege, and our platform is designed to make nutritious, affordable meals accessible to everyone.
+            Whether you're a busy student, a working professional, or a parent managing a household, NutriBudget gives you the tools to make informed food choices without stress or expense. We believe that healthy eating is a fundamental right, not a privilege.
           </p>
         </div>
 
@@ -69,7 +99,7 @@ export function AboutSection() {
               <div
                 key={title}
                 className="bg-card rounded-xl p-6 border border-border animate-in-view hover:shadow-md transition-shadow duration-300"
-                data-delay={String(i + 1)}
+                data-delay={String(i + 3)}
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-secondary mb-4">
                   <Icon className="w-6 h-6 text-primary" />
@@ -82,7 +112,7 @@ export function AboutSection() {
         </div>
 
         {/* How We Work */}
-        <div className="mb-16 animate-in-view" data-delay="2">
+        <div className="mb-16 animate-in-view" data-delay="6">
           <h3 className="text-2xl font-bold text-foreground mb-10 text-center">How We Work</h3>
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-card rounded-xl p-6 border border-border">
@@ -110,7 +140,17 @@ export function AboutSection() {
         </div>
 
         {/* Why Choose Us */}
-        <div className="grid md:grid-cols-2 gap-12 items-center animate-in-view" data-delay="3">
+        <div className="grid md:grid-cols-2 gap-12 items-center animate-in-view" data-delay="7">
+          <div className="relative rounded-2xl overflow-hidden animate-in-view-left">
+            <Image
+              src="/images/about-budget-planning.jpg"
+              alt="Professional planning weekly meals with budget-friendly ingredients"
+              width={500}
+              height={400}
+              className="w-full h-full object-cover rounded-2xl"
+              priority
+            />
+          </div>
           <div>
             <h3 className="text-2xl font-bold text-foreground mb-6">Why Choose NutriBudget?</h3>
             <ul className="space-y-4">
@@ -131,30 +171,33 @@ export function AboutSection() {
               ))}
             </ul>
           </div>
-          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 border border-primary/20">
-            <div className="space-y-6">
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">1000+</div>
-                <p className="text-sm text-muted-foreground">Users saving money on groceries</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">50K+</div>
-                <p className="text-sm text-muted-foreground">Meal plans generated</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">$2.5M</div>
-                <p className="text-sm text-muted-foreground">Total saved on groceries</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">4.9★</div>
-                <p className="text-sm text-muted-foreground">Average user rating</p>
-              </div>
+        </div>
+
+        {/* Impact Stats */}
+        <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16 animate-in-view" data-delay="8">
+          <h3 className="text-2xl font-bold text-foreground mb-10 text-center">Our Impact</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary mb-3">1000+</div>
+              <p className="text-sm text-muted-foreground">Active users saving money</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary mb-3">50K+</div>
+              <p className="text-sm text-muted-foreground">Meal plans created</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary mb-3">$2.5M</div>
+              <p className="text-sm text-muted-foreground">Saved on groceries</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary mb-3">4.9★</div>
+              <p className="text-sm text-muted-foreground">User satisfaction rating</p>
             </div>
           </div>
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 animate-in-view" data-delay="4">
+        <div className="text-center mt-16 animate-in-view" data-delay="9">
           <p className="text-lg text-muted-foreground mb-4">
             Ready to start planning healthier meals and saving money?
           </p>
