@@ -10,7 +10,7 @@ import { FooterSection } from "@/components/sections/footer-section";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background font-sans">
+    <div className="min-h-screen bg-background font-sans" suppressHydrationWarning>
       <Navbar />
       <main>
         <HeroSection />
