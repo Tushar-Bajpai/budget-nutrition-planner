@@ -12,7 +12,7 @@ export function CtaSection() {
     <section
       id="cta"
       ref={ref}
-      className="py-20 md:py-28 bg-background"
+      className="py-12 md:py-16 bg-background"
       aria-label="Call to action"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -12,7 +12,6 @@ const navLinks = [
   { label: "Planner", href: "/planner" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "About", href: "#about" },
 ];
 
 function smoothScrollTo(href: string) {
