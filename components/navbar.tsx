@@ -29,14 +29,10 @@ export function Navbar() {
   const [progress, setProgress] = useState(0);
 
   // Active link: pathname-based for page routes, section-based for anchors
-  const [activeHref, setActiveHref] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      // Match pathname to a nav link
-      const matched = navLinks.find((l) => l.href === window.location.pathname);
-      return matched ? matched.href : "/";
-    }
-    return "/";
-  });
+  // Initialize from pathname (provided by Next.js) to avoid hydration mismatch
+  const [activeHref, setActiveHref] = useState<string>(
+    () => navLinks.find((l) => !l.href.startsWith("#") && l.href === pathname)?.href ?? "/"
+  );
 
   // Refs for the nav container and per-link elements to measure positions
   const navRef = useRef<HTMLElement>(null);

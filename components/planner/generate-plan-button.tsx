@@ -33,15 +33,38 @@ export function GeneratePlanButton({ data }: GeneratePlanButtonProps) {
   const { target } = calculateCalories(data);
   const symbol = { USD: "$", EUR: "€", GBP: "£" }[data.currency] ?? "$";
 
-  function handleGenerate() {
-    if (!ready) return;
-    setLoading(true);
-    // Simulate generation and navigate to meal plan page
-    setTimeout(() => {
+  async function handleGenerate() {
+  if (!ready) return;
+  setLoading(true);
+
+  try {
+    const response = await fetch("/api/generate-plan", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("API Error:", errorData.errors);
       setLoading(false);
-      setGenerated(true);
-    }, 2200);
+      return;
+    }
+
+    const mealPlanData = await response.json();
+    console.log("Generated plan:", mealPlanData);
+
+    // Store the data in localStorage so meal-plan page can access it
+    localStorage.setItem("generatedMealPlan", JSON.stringify(mealPlanData));
+    localStorage.setItem("lastPlannerInput", JSON.stringify(data));
+
+    setLoading(false);
+    setGenerated(true);
+  } catch (error) {
+    console.error("Generation failed:", error);
+    setLoading(false);
   }
+}
 
   function handleViewPlan() {
     router.push("/meal-plan");

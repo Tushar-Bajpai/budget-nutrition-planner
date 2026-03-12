@@ -7,9 +7,23 @@ interface MealPlanHeaderProps {
   totalCalories: number;
   totalCost: number;
   currency?: string;
+  onPrint?: () => void;
+  onExportPdf?: () => void;
+  onRegenerate?: () => void;
+  isExporting?: boolean;
+  isRegenerating?: boolean;
 }
 
-export function MealPlanHeader({ totalCalories, totalCost, currency = "$" }: MealPlanHeaderProps) {
+export function MealPlanHeader({
+  totalCalories,
+  totalCost,
+  currency = "$",
+  onPrint,
+  onExportPdf,
+  onRegenerate,
+  isExporting = false,
+  isRegenerating = false,
+}: MealPlanHeaderProps) {
   return (
     <div className="bg-primary/5 border-b border-border pt-24 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,6 +62,8 @@ export function MealPlanHeader({ totalCalories, totalCost, currency = "$" }: Mea
               variant="outline"
               size="sm"
               className="rounded-lg border-border gap-2"
+              onClick={onPrint}
+              type="button"
             >
               <Printer className="w-4 h-4" />
               <span className="hidden sm:inline">Print</span>
@@ -56,16 +72,22 @@ export function MealPlanHeader({ totalCalories, totalCost, currency = "$" }: Mea
               variant="outline"
               size="sm"
               className="rounded-lg border-border gap-2"
+              onClick={onExportPdf}
+              disabled={isExporting}
+              type="button"
             >
-              <Download className="w-4 h-4" />
-              <span className="hidden sm:inline">Export PDF</span>
+              <Download className={`w-4 h-4 ${isExporting ? "animate-pulse" : ""}`} />
+              <span className="hidden sm:inline">{isExporting ? "Opening PDF..." : "Export PDF"}</span>
             </Button>
             <Button
               size="sm"
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg gap-2"
+              onClick={onRegenerate}
+              disabled={isRegenerating}
+              type="button"
             >
-              <RefreshCw className="w-4 h-4" />
-              Regenerate
+              <RefreshCw className={`w-4 h-4 ${isRegenerating ? "animate-spin" : ""}`} />
+              {isRegenerating ? "Regenerating..." : "Regenerate"}
             </Button>
           </div>
         </div>

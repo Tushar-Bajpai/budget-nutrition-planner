@@ -1,24 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { RefreshCw, ArrowLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface RegenerateButtonProps {
-  onRegenerate?: () => void;
+  onRegenerate?: () => void | Promise<void>;
+  loading?: boolean;
 }
 
-export function RegenerateButton({ onRegenerate }: RegenerateButtonProps) {
-  const [loading, setLoading] = useState(false);
-
+export function RegenerateButton({ onRegenerate, loading = false }: RegenerateButtonProps) {
   function handleRegenerate() {
-    setLoading(true);
-    // Simulate regeneration
-    setTimeout(() => {
-      setLoading(false);
-      onRegenerate?.();
-    }, 2000);
+    void onRegenerate?.();
   }
 
   return (
