@@ -9,8 +9,15 @@ const features = [
 
 export function FooterSection() {
   return (
-    <footer className="bg-foreground pt-16 pb-10" aria-label="Footer">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer 
+      className="bg-foreground pt-16 pb-10 relative" 
+      style={{
+        backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+        backgroundSize: "20px 20px"
+      }}
+      aria-label="Footer"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Features Grid */}
         <div className="grid sm:grid-cols-3 gap-8 mb-12">
           {features.map(({ icon: Icon, label, description }) => (
