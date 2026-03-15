@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -43,7 +43,7 @@ export function HeroSection() {
   }, []);
 
   // Auto-rotate slides every 5 seconds
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % SLIDES.length);
     }, 5000);
