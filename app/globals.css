@@ -133,26 +133,26 @@
   .animate-in-view {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .animate-in-view.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
-  /* Stagger delays for grid children */
-  .animate-in-view[data-delay="1"] { transition-delay: 80ms; }
-  .animate-in-view[data-delay="2"] { transition-delay: 160ms; }
-  .animate-in-view[data-delay="3"] { transition-delay: 240ms; }
-  .animate-in-view[data-delay="4"] { transition-delay: 320ms; }
-  .animate-in-view[data-delay="5"] { transition-delay: 400ms; }
-  .animate-in-view[data-delay="6"] { transition-delay: 480ms; }
+  /* Stagger delays for grid children — minimal for smooth transitions */
+  .animate-in-view[data-delay="1"] { transition-delay: 20ms; }
+  .animate-in-view[data-delay="2"] { transition-delay: 40ms; }
+  .animate-in-view[data-delay="3"] { transition-delay: 60ms; }
+  .animate-in-view[data-delay="4"] { transition-delay: 80ms; }
+  .animate-in-view[data-delay="5"] { transition-delay: 100ms; }
+  .animate-in-view[data-delay="6"] { transition-delay: 120ms; }
   /* Slide-in from left */
   .animate-in-view-left {
     opacity: 0;
     transform: translateX(-32px);
-    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .animate-in-view-left.is-visible {
     opacity: 1;
@@ -162,8 +162,8 @@
   .animate-in-view-right {
     opacity: 0;
     transform: translateX(32px);
-    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .animate-in-view-right.is-visible {
     opacity: 1;
@@ -173,8 +173,8 @@
   .animate-in-view-scale {
     opacity: 0;
     transform: scale(0.9) translateY(16px);
-    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .animate-in-view-scale.is-visible {
     opacity: 1;
