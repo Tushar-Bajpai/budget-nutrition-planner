@@ -36,24 +36,19 @@ const SLIDES = [
 
 export function HeroSection() {
   const [current, setCurrent] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback((index: number) => {
     setCurrent((SLIDES.length + index) % SLIDES.length);
   }, []);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const rect = trackRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      const x = e.clientX - rect.left;
-      const segment = rect.width / SLIDES.length;
-      const index = Math.min(Math.floor(x / segment), SLIDES.length - 1);
-      setCurrent(index);
-    },
-    []
-  );
+  // Auto-rotate slides every 5 seconds
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % SLIDES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -152,12 +147,9 @@ export function HeroSection() {
 
             <div
               ref={trackRef}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-square cursor-none select-none group"
-              onMouseMove={handleMouseMove}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-square select-none group"
               role="region"
-              aria-label="Meal inspiration image slider — hover to browse"
+              aria-label="Meal inspiration image slider — auto-rotating"
             >
               {/* Slides */}
               {SLIDES.map((slide, i) => (
@@ -211,34 +203,17 @@ export function HeroSection() {
               <button
                 onClick={() => goTo(current - 1)}
                 aria-label="Previous slide"
-                className={[
-                  "absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-                  isHovering ? "opacity-0" : "opacity-100 md:opacity-0 md:group-hover:opacity-100",
-                ].join(" ")}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:opacity-0 md:group-hover:opacity-100 opacity-100"
               >
                 <ChevronLeft className="w-4 h-4 text-foreground" aria-hidden="true" />
               </button>
               <button
                 onClick={() => goTo(current + 1)}
                 aria-label="Next slide"
-                className={[
-                  "absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-                  isHovering ? "opacity-0" : "opacity-100 md:opacity-0 md:group-hover:opacity-100",
-                ].join(" ")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:opacity-0 md:group-hover:opacity-100 opacity-100"
               >
                 <ChevronRight className="w-4 h-4 text-foreground" aria-hidden="true" />
               </button>
-
-              {/* Hover hint */}
-              <div
-                className={[
-                  "absolute top-4 right-4 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium text-foreground shadow transition-opacity duration-300 pointer-events-none",
-                  isHovering ? "opacity-0" : "opacity-100",
-                ].join(" ")}
-                aria-hidden="true"
-              >
-                Hover to explore
-              </div>
             </div>
 
             {/* Floating stats card */}
