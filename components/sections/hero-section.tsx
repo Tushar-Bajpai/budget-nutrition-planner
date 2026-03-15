@@ -184,7 +184,7 @@ export function HeroSection() {
               {/* Caption */}
               <div className="absolute bottom-20 left-5 right-5 pointer-events-none">
                 <p className="text-white text-sm font-semibold tracking-wide drop-shadow-md transition-all duration-300">
-                  {SLIDES[current].caption}
+                  {SLIDES[current]?.caption || ""}
                 </p>
               </div>
 
@@ -195,7 +195,7 @@ export function HeroSection() {
                     key={i}
                     role="tab"
                     aria-selected={i === current}
-                    aria-label={`Go to slide ${i + 1}: ${SLIDES[i].caption}`}
+                    aria-label={`Go to slide ${i + 1}: ${SLIDES[i]?.caption || ""}`}
                     onClick={() => goTo(i)}
                     className={[
                       "rounded-full transition-all duration-300 pointer-events-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
