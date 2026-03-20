@@ -31,13 +31,13 @@ export function ProblemSection() {
     <section
       id="problem"
       ref={ref}
-      className="py-20 md:py-28 bg-foreground dark:bg-secondary"
+      className="py-20 md:py-28 bg-background dark:bg-secondary"
       aria-label="The problem"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mb-14 animate-in-view">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground dark:text-primary-foreground leading-tight text-balance">
             Why Healthy Eating Is Difficult for Many People
           </h2>
         </div>
@@ -47,24 +47,24 @@ export function ProblemSection() {
           {problems.map(({ icon: Icon, title, description }, i) => (
             <div
               key={title}
-              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-secondary/50 border border-secondary hover:bg-secondary/70 transition-colors"
+              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-secondary/20 dark:bg-secondary/50 border border-secondary/30 dark:border-secondary hover:bg-secondary/30 dark:hover:bg-secondary/70 transition-colors"
               data-delay={String(i + 1) as "1" | "2" | "3"}
             >
               <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center shrink-0">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className="text-base font-semibold text-primary-foreground leading-snug">
+                <h3 className="text-base font-semibold text-foreground dark:text-primary-foreground leading-snug">
                   {title}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed">{description}</p>
+                <p className="text-sm text-muted-foreground dark:text-white/60 leading-relaxed">{description}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Stat bar */}
-        <div className="mt-14 grid sm:grid-cols-3 gap-px bg-secondary/50 rounded-2xl overflow-hidden">
+        <div className="mt-14 grid sm:grid-cols-3 gap-px bg-secondary/30 dark:bg-secondary/50 rounded-2xl overflow-hidden">
           {[
             { value: "$1,800", label: "avg. annual food waste per household" },
             { value: "68%", label: "of people skip meal planning entirely" },
