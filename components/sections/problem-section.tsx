@@ -31,7 +31,7 @@ export function ProblemSection() {
     <section
       id="problem"
       ref={ref}
-      className="py-20 md:py-28 bg-foreground"
+      className="py-20 md:py-28 bg-foreground dark:bg-secondary"
       aria-label="The problem"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,10 +47,10 @@ export function ProblemSection() {
           {problems.map(({ icon: Icon, title, description }, i) => (
             <div
               key={title}
-              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/8 transition-colors"
+              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-secondary/50 border border-secondary hover:bg-secondary/70 transition-colors"
               data-delay={String(i + 1) as "1" | "2" | "3"}
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center shrink-0">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
               <div className="flex flex-col gap-2">
@@ -64,7 +64,7 @@ export function ProblemSection() {
         </div>
 
         {/* Stat bar */}
-        <div className="mt-14 grid sm:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden">
+        <div className="mt-14 grid sm:grid-cols-3 gap-px bg-secondary/50 rounded-2xl overflow-hidden">
           {[
             { value: "$1,800", label: "avg. annual food waste per household" },
             { value: "68%", label: "of people skip meal planning entirely" },
@@ -76,7 +76,7 @@ export function ProblemSection() {
               data-delay={String(i + 1) as "1" | "2" | "3"}
             >
               <span className="text-3xl font-bold text-primary">{value}</span>
-              <span className="text-sm text-white/60 leading-relaxed">{label}</span>
+              <span className="text-sm text-muted-foreground leading-relaxed">{label}</span>
             </div>
           ))}
         </div>

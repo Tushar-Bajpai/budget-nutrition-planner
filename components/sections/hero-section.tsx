@@ -91,10 +91,15 @@ export function HeroSection() {
             {/* Social proof */}
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2" aria-hidden="true">
-                {["#4ade80", "#22c55e", "#16a34a", "#15803d"].map((color, i) => (
+                {[
+                  "var(--primary)",
+                  "color-mix(in oklab, var(--primary) 90%, var(--secondary))",
+                  "color-mix(in oklab, var(--primary) 80%, var(--secondary))",
+                  "color-mix(in oklab, var(--primary) 70%, var(--secondary))"
+                ].map((color, i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-background flex items-center justify-center text-xs font-bold text-white"
+                    className="w-8 h-8 rounded-full border-2 border-background flex items-center justify-center text-xs font-bold text-primary-foreground"
                     style={{ backgroundColor: color }}
                   >
                     {["A", "B", "C", "D"][i]}
@@ -146,7 +151,7 @@ export function HeroSection() {
           >
             {/* Decorative ring */}
             <div
-              className="absolute -z-10 -top-8 -right-8 w-72 h-72 rounded-full bg-secondary opacity-60"
+              className="absolute -z-10 -top-8 -right-8 w-72 h-72 rounded-full bg-primary/20 opacity-60"
               aria-hidden="true"
             />
 

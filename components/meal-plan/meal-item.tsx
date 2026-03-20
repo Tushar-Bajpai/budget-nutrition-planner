@@ -13,26 +13,26 @@ const mealConfig = {
   breakfast: {
     icon: Coffee,
     label: "Breakfast",
-    gradient: "from-amber-500/10 to-orange-500/10",
-    iconColor: "text-amber-600",
+    gradient: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
   },
   lunch: {
     icon: Sun,
     label: "Lunch",
-    gradient: "from-yellow-500/10 to-amber-500/10",
-    iconColor: "text-yellow-600",
+    gradient: "from-accent/10 to-accent/5",
+    iconColor: "text-accent",
   },
   dinner: {
     icon: Moon,
     label: "Dinner",
-    gradient: "from-indigo-500/10 to-purple-500/10",
-    iconColor: "text-indigo-600",
+    gradient: "from-primary/10 to-primary/5",
+    iconColor: "text-primary",
   },
   snack: {
     icon: Cookie,
     label: "Snack",
-    gradient: "from-green-500/10 to-emerald-500/10",
-    iconColor: "text-green-600",
+    gradient: "from-accent/10 to-accent/5",
+    iconColor: "text-accent",
   },
 };
 
@@ -76,13 +76,13 @@ export function MealItemCard({ type, meal }: MealItemProps) {
 
       {/* Macros row */}
       <div className="flex items-center gap-2 mt-2 pt-2 border-t border-border/50">
-        <span className="text-xs px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-700 font-medium">
+        <span className="text-xs px-1.5 py-0.5 rounded bg-primary/10 text-primary font-medium">
           P: {meal.protein}g
         </span>
-        <span className="text-xs px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-700 font-medium">
+        <span className="text-xs px-1.5 py-0.5 rounded bg-accent/10 text-accent font-medium">
           C: {meal.carbs}g
         </span>
-        <span className="text-xs px-1.5 py-0.5 rounded bg-pink-500/10 text-pink-700 font-medium">
+        <span className="text-xs px-1.5 py-0.5 rounded bg-secondary-foreground/10 text-secondary-foreground font-medium">
           F: {meal.fat}g
         </span>
       </div>

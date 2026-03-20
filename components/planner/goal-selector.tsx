@@ -15,9 +15,9 @@ const goals = [
     icon: TrendingDown,
     label: "Lose Weight",
     description: "Calorie deficit to reduce body fat while preserving muscle",
-    color: "text-orange-500",
-    bg: "bg-orange-50 border-orange-200",
-    activeBg: "bg-orange-500/10 border-orange-500",
+    color: "text-primary",
+    bg: "bg-secondary border-border",
+    activeBg: "bg-primary/10 border-primary",
   },
   {
     value: "maintain" as const,
@@ -33,9 +33,9 @@ const goals = [
     icon: TrendingUp,
     label: "Gain Muscle",
     description: "Calorie surplus optimized for muscle growth and recovery",
-    color: "text-blue-500",
-    bg: "bg-blue-50 border-blue-200",
-    activeBg: "bg-blue-500/10 border-blue-500",
+    color: "text-primary",
+    bg: "bg-secondary border-border",
+    activeBg: "bg-primary/10 border-primary",
   },
 ];
 

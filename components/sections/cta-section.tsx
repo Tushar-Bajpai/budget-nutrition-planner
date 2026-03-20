@@ -19,11 +19,11 @@ export function CtaSection() {
         <div className="animate-in-view rounded-3xl bg-primary px-8 py-16 md:py-20 flex flex-col items-center text-center gap-8 relative overflow-hidden">
           {/* Decorative circles */}
           <div
-            className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-white/5"
+            className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-primary-foreground/5"
             aria-hidden="true"
           />
           <div
-            className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-white/5"
+            className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-primary-foreground/5"
             aria-hidden="true"
           />
 
@@ -40,7 +40,7 @@ export function CtaSection() {
             <Button
               asChild
               size="lg"
-              className="bg-card text-primary hover:bg-card/90 font-bold rounded-xl px-8 gap-2 text-base shadow-md"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-bold rounded-xl px-8 gap-2 text-base shadow-md"
             >
               <Link href="/planner">
                 Start My Meal Plan <ArrowRight className="w-4 h-4" />
@@ -48,7 +48,7 @@ export function CtaSection() {
             </Button>
           </div>
 
-          <p className="relative text-xs text-primary-foreground/60">
+          <p className="relative text-xs text-primary-foreground/70">
             No credit card required &bull; Free plan available &bull; Cancel anytime
           </p>
         </div>
