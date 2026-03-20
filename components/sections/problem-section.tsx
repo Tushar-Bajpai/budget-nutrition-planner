@@ -47,10 +47,10 @@ export function ProblemSection() {
           {problems.map(({ icon: Icon, title, description }, i) => (
             <div
               key={title}
-              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-secondary/20 dark:bg-secondary/50 border border-secondary/30 dark:border-secondary hover:bg-secondary/30 dark:hover:bg-secondary/70 transition-colors"
+              className="animate-in-view flex flex-col gap-4 p-6 rounded-2xl bg-card border border-border hover:shadow-md dark:bg-secondary/50 dark:border-secondary dark:hover:bg-secondary/70 transition-colors"
               data-delay={String(i + 1) as "1" | "2" | "3"}
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 dark:bg-primary/30 flex items-center justify-center shrink-0">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
               <div className="flex flex-col gap-2">
