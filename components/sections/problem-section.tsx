@@ -64,7 +64,7 @@ export function ProblemSection() {
         </div>
 
         {/* Stat bar */}
-        <div className="mt-14 grid sm:grid-cols-3 gap-px bg-secondary/30 dark:bg-secondary/50 rounded-2xl overflow-hidden">
+        <div className="mt-14 grid sm:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
           {[
             { value: "$1,800", label: "avg. annual food waste per household" },
             { value: "68%", label: "of people skip meal planning entirely" },
@@ -72,7 +72,7 @@ export function ProblemSection() {
           ].map(({ value, label }, i) => (
             <div
               key={label}
-              className="animate-in-view-scale bg-foreground px-8 py-7 flex flex-col gap-1"
+              className="animate-in-view-scale bg-card dark:bg-foreground px-8 py-7 flex flex-col gap-1"
               data-delay={String(i + 1) as "1" | "2" | "3"}
             >
               <span className="text-3xl font-bold text-primary">{value}</span>
