@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { Menu, X, UtensilsCrossed } from "lucide-react";
 
@@ -224,8 +223,7 @@ export function Navbar() {
           </nav>
 
           {/* CTA — desktop */}
-          <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
+          <div className="hidden md:flex items-center gap-3">
             <Button
               asChild
               size="sm"
@@ -288,10 +286,6 @@ export function Navbar() {
             );
           })}
           <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-muted-foreground">Theme:</span>
-              <ThemeToggle />
-            </div>
             <Button
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg"
