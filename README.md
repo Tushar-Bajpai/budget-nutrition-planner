@@ -52,7 +52,7 @@ This project uses Next.js Route Handlers as backend endpoints.
 Important note:
 - No database is currently connected.
 - Meal data is static and stored in source code.
-- Generated plans are kept in browser localStorage.
+
 
 ## API Reference
 
