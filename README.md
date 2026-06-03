@@ -44,7 +44,7 @@ This project uses Next.js Route Handlers as backend endpoints.
   - calculates calories
   - generates weekly meal plan
   - generates grocery list
-  - returns formatted plan and summary data
+  - returns formatted plan and summarya data
 
 - GET /api/ping
   - health-check endpoint returning status and timestamp
