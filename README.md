@@ -205,7 +205,7 @@ pnpm start
 - No database-backed meal catalog
 - Allergen and cuisine preferences are collected but not yet applied in recommendation logic
 
-## Suggested Next Steps
+## Future enhancements
 
 - Add database for user accounts and saved meal plans
 - Add auth for multi-device access
